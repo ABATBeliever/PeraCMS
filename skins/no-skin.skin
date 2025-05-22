@@ -1,0 +1,24 @@
+<?php
+//included skins "No-Skin" by ABATBeliever 
+//Skin version: 1.0 
+//Skin licence: free
+echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>" . htmlspecialchars($title) . "</title>";
+echo "<style>*,*::before,*::after{box-sizing:border-box}*{margin:0}@media (prefers-reduced-motion:no-preference){html{interpolate-size:allow-keywords}}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}p{text-wrap:pretty}h1,h2,h3,h4,h5,h6{text-wrap:balance}#root,#__next{isolation:isolate}</style>";
+echo "<style>
+body { background: rgb({$color['back-rgb']}); color: rgb({$color['text-rgb']}); font-family: sans-serif; line-height: 1.6; }
+h1, h2 { margin-top: 1em; }
+table { border-collapse: collapse; margin-top: 1em; }
+td { border: 1px solid #ccc; padding: 4px 8px; }
+</style></head><body>";
+
+echo "<h1>" . htmlspecialchars($title) . "</h1>";
+echo "<p>著者: " . htmlspecialchars($sections['ini']['author']) . " / 投稿日: " . htmlspecialchars($sections['ini']['day']) . "</p>";
+
+foreach ($bodyBlocks as $block) {
+    echo "<section class='skin-{$block['skin']}'>";
+    echo $block['html'];
+    echo "</section>";
+}
+
+echo "</body></html>";
+?>

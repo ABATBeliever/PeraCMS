@@ -1,0 +1,48 @@
+[ini]
+title=PHP製 超軽量 動的CMSソフト 「Pera CMS」
+day=2025/05/22
+update=2025/05/22
+author=ABATBeliever
+skin=tech
+
+[color]
+back-rgb=248,249,250
+text-rgb=33,37,41
+
+[text]
+@skin 0
+# Pera CMS とは？
+
+Pera CMS は、軽量でシンプルな PHP ベースのコンテンツ管理システムです。
+
+- `*.txt` ファイルだけで記事を書く
+- 単一ファイル`read.php` がパース・レンダリングを担当
+- スキンは PHP + HTML + CSS で柔軟に定義可能
+- 完全オープンソース(Apacheライセンス)・純国産
+- 一切のDB不要、超軽量！
+
+@skin 1
+
+# 特徴
+
+- Markdownライクな文法
+- セクション分けとスキンの読み込みが可能
+- 図やYouTube埋め込み、画像もOK
+- 超軽量(約32KB)
+
+@skin 2
+
+|機能|説明|
+|記事形式|INI + マークアップ|
+|スキンのCSS切り替え|@skin n で可能|
+|画像対応|i mg(ファイル名) の関数|
+|埋め込み|y outube(動画ID) の関数|
+
+@skin 1
+このページもPera CMSで作ってるって知ったら驚く?
+[技術的情報はコチラ！](https://abatbeliever.net/app/PeraCMS/info)
+
+[Githubリポジトリ](#)
+[この記事の定義ファイルを見る](https://abatbeliever.net/app/PeraCMS/data/index.txt)
+[この記事のスキンファイル「tech」を見る](https://abatbeliever.net/app/PeraCMS/skins/tech.skin)
+[EOF]

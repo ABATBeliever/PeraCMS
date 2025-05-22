@@ -1,0 +1,13 @@
+[ini]
+title=「Pera CMS」の詳しい仕組み 
+day=2025/05/22
+update=2025/05/22
+author=ABATBeliever
+skin=tech
+
+[color]
+back-rgb=248,249,250
+text-rgb=33,37,41
+
+[text]
+# 準備中

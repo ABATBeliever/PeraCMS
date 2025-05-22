@@ -1,0 +1,134 @@
+<?php
+//included skins "Tech" by ABATBeliever 
+//Skin version: 1.0 
+//Skin licence: free
+echo "<!DOCTYPE html><html lang='ja'><head><meta charset='UTF-8'>";
+echo "<title>" . htmlspecialchars($title) . "</title>";
+echo "<meta name='viewport' content='width=device-width, initial-scale=1'>";
+echo "<style>*,*::before,*::after{box-sizing:border-box}*{margin:0}@media (prefers-reduced-motion:no-preference){html{interpolate-size:allow-keywords}}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}p{text-wrap:pretty}h1,h2,h3,h4,h5,h6{text-wrap:balance}#root,#__next{isolation:isolate}</style>";
+echo "<style>
+body {
+    font-family: 'Segoe UI', 'Hiragino Kaku Gothic ProN', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: rgb({$color['back-rgb']});
+    color: rgb({$color['text-rgb']});
+}
+#container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+}
+#sidebar {
+    width: 220px;
+    padding: 1em;
+    background: #f5f5f5;
+    border-right: 1px solid #ccc;
+}
+#content {
+    flex: 1;
+    padding: 2em;
+}
+h1 {
+    font-size: 2em;
+    border-bottom: 1px solid #aaa;
+    padding-bottom: 0.2em;
+    margin-bottom: 0.8em;
+}
+h2 {
+    font-size: 1.5em;
+    border-bottom: 1px solid #ccc;
+    margin-top: 1.5em;
+}
+p {
+    margin: 1em 0;
+}
+table {
+    border-collapse: collapse;
+    margin: 1em 0;
+    width: 100%;
+}
+td {
+    border: 1px solid #aaa;
+    padding: 0.4em 0.6em;
+}
+img {
+    max-width: 100%;
+    height: auto;
+}
+iframe {
+    width: 100%;
+    max-width: 560px;
+    height: 315px;
+    display: block;
+    margin: 1em auto;
+}
+a {
+    color: #0645ad;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+
+/* --- skin variations --- */
+.skin-0 {
+    background: none;
+}
+
+.skin-1 {
+    background: #eef5ff;
+    border-left: 4px solid #36c;
+    padding: 1em;
+    margin: 1em 0;
+}
+
+.skin-2 {
+    background: #fdf8e7;
+    border: 1px solid #e1c691;
+    padding: 1em;
+    margin: 1em 0;
+    font-size: 0.95em;
+    font-style: italic;
+}
+
+/* meta info */
+.meta {
+    font-size: 0.9em;
+    color: #555;
+    margin-bottom: 1em;
+}
+@media screen and (max-width: 768px) {
+    #container {
+        flex-direction: column;
+    }
+    #sidebar {
+        width: 100%;
+        border-right: none;
+        border-bottom: 1px solid #ccc;
+    }
+}
+</style></head><body>";
+
+echo "<div id='container'>";
+
+echo "<aside id='sidebar'>";
+echo "<h2>ナビゲーション</h2>";
+echo "<ul><li><a href='/'>トップ</a></li><li><a href='./version'>Version</a></li></ul>";
+echo "</aside>";
+
+echo "<main id='content'>";
+echo "<h1>" . htmlspecialchars($title) . "</h1>";
+echo "<div class='meta'>著者: " . htmlspecialchars($sections['ini']['author']) . " / 投稿日: " . htmlspecialchars($sections['ini']['day']) . " / 最終更新: " . htmlspecialchars($sections['ini']['update']) . "</div>";
+
+foreach ($bodyBlocks as $block) {
+    echo "<section class='skin-{$block['skin']}'>";
+    echo $block['html'];
+    echo "</section>";
+}
+
+echo "</main>";
+echo "</div>";
+echo "</body></html>";
+?>
