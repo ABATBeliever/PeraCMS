@@ -1,10 +1,9 @@
 <?php
-//Pera CMS v1.0
-//Made by ABATBeliever
-//Under Apache License.
-
+// Pera CMS by ABATBeliever
+// License - Apache 2.0
 $SYSTEM_NAME    = 'Pera CMS';
-$SYSTEM_VERSION = 'Alpha 1';
+$SYSTEM_VERSION = 'Alpha 2';
+$BASE_URL       = 'https://abatbeliever.net/app/PeraCMS/';
 
 $article = $_GET['article'] ?? '';
 if ($article === 'version') {
@@ -53,6 +52,29 @@ function parse_sections($content) {
     return $sections;
 }
 
+function convertRelativeLinks($text, $baseUrl) {
+    return preg_replace_callback('/\[(.*?)\]\(@([a-zA-Z0-9_\-]+)\)/', function ($matches) use ($baseUrl) {
+        $label = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
+        $target = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
+        return "<a href='{$baseUrl}{$target}'>{$label}</a>";
+    }, $text);
+}
+
+$sections = parse_sections($content);
+
+$title       = $sections['ini']['title']       ?? 'no-title';
+$color       = $sections['color']              ?? ['back-rgb' => '255,255,255', 'text-rgb' => '0,0,0'];
+$favicon     = $sections['ini']['favicon']     ?? 'favicon.ico';
+$robots      = $sections['ini']['robots']      ?? 'index, follow';
+$description = $sections['ini']['description'] ?? ' ';
+$ogp         = $sections['ini']['ogp']         ?? '';
+
+if ($ogp && !preg_match('#^https?://#', $ogp)) {
+    $ogp = rtrim($BASE_URL, '/') . '/img/' . ltrim($ogp, '/');
+}
+
+$sections['text'] = convertRelativeLinks($sections['text'], $BASE_URL);
+
 function convert_to_html($text) {
     $lines = explode("\n", $text);
     $html = '';
@@ -66,6 +88,8 @@ function convert_to_html($text) {
             $html .= "<h2>" . htmlspecialchars($m[1]) . "</h2>";
         } elseif (preg_match('/\[(.+?)\]\((https?:\/\/.+?)\)/', $line, $m)) {
             $html .= "<p><a href=\"" . htmlspecialchars($m[2]) . "\" target=\"_blank\">" . htmlspecialchars($m[1]) . "</a></p>";
+        } elseif (preg_match('/^<a href=/', $line)) {
+            $html .= "<p>{$line}</p>";
         } elseif (preg_match('/youtube\((.+?)\)/', $line, $m)) {
             $id = htmlspecialchars($m[1]);
             $html .= "<iframe width='560' height='315' src='https://www.youtube.com/embed/{$id}' frameborder='0' allowfullscreen></iframe>";
@@ -91,10 +115,6 @@ function convert_to_html($text) {
     if ($inTable) $html .= "</table>";
     return $html;
 }
-
-$sections = parse_sections($content);
-$title = $sections['ini']['title'] ?? 'no-title';
-$color = $sections['color'] ?? ['back-rgb' => '255,255,255', 'text-rgb' => '0,0,0'];
 
 $bodyBlocks = [];
 $lines = explode("\n", $sections['text']);

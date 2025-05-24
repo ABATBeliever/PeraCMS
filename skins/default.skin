@@ -1,8 +1,17 @@
 <?php
 //included skins "No-Skin" by ABATBeliever 
-//Skin version: 1.0 
+//Skin for Alpha 2
 //Skin licence: free
-echo "<!DOCTYPE html><html><head><meta charset='UTF-8'><title>" . htmlspecialchars($title) . "</title>";
+echo "<!DOCTYPE html><html lang='ja'><head><meta charset='UTF-8'>";
+echo "<title>" . htmlspecialchars($title) . "</title>";
+echo "<link rel='icon' href='{$favicon}' type='image/x-icon'>";
+echo "<meta name='robots' content='{$robots}'>";
+echo "<meta property='og:title' content='" . htmlspecialchars($title) . "'>";
+echo "<meta property='og:description' content='{$description}'>";
+if ($ogp) {
+    echo "<meta property='og:image' content='{$ogp}'>";
+}
+echo "<meta name='viewport' content='width=device-width, initial-scale=1'>";
 echo "<style>*,*::before,*::after{box-sizing:border-box}*{margin:0}@media (prefers-reduced-motion:no-preference){html{interpolate-size:allow-keywords}}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}p{text-wrap:pretty}h1,h2,h3,h4,h5,h6{text-wrap:balance}#root,#__next{isolation:isolate}</style>";
 echo "<style>
 body { background: rgb({$color['back-rgb']}); color: rgb({$color['text-rgb']}); font-family: sans-serif; line-height: 1.6; }
