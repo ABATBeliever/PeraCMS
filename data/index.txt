@@ -1,63 +1,66 @@
 [ini]
-title=PHP製 超軽量 動的CMSソフト 「Pera CMS」
+title=超軽量CMS「Pera CMS」紹介ページ
 day=2025/05/22
-update=2025/05/24
+update=2025/05/27
 author=ABATBeliever
 skin=tech
 favicon=PeraCMS.ico
 robots=index, follow
-description=超軽量・超簡単・純国産。データベース不要、PHP製の動的CMS「Pera CMS」の紹介。
+description=PHP単体で動作する超軽量CMS「Pera CMS」の紹介。
 ogp=1200x800.jpg
 
 [color]
 back-rgb=248,249,250
 text-rgb=33,37,41
 
-[text]
-@skin 1
-# 開発状況
-ステータス: アルファ版
-最新版は  : Alpha 2 (Release at 2025/05/24)
+[extend]
+copyright=©2025 ABATBeliever
+notice=このCMSはアルファ版です
 
+[text]
 @skin 0
 # Pera CMS とは？
+{notice}
 
-Pera CMS は、軽量でシンプルな PHP ベースのコンテンツ管理システムです。
+Pera CMS は、PHP単体で動作するシンプルなCMSです。
 
-- `*.txt` ファイルだけで記事を書く
-- 単一ファイル`read.php` がパース・レンダリングを担当
-- スキンは PHP + HTML + CSS で柔軟に定義可能
-- 完全オープンソース(Apacheライセンス)・純国産
-- 一切のDB不要、超軽量！
+- データはすべて `.txt` ファイルで記述
+- スキンはHTMLテンプレート形式（PHP不要）
+- DB不要、構成ファイルは約30KBの軽さ
+- 超シンプルで高速！
 
 @skin 1
-
 # 特徴
 
-- Markdownライクな文法
-- セクション分けとスキンの読み込みが可能
-- 図やYouTube埋め込み、画像もOK
-- 超軽量(約32KB)
+- `@img(a)` で画像、`@youtube(a)` で動画を埋め込み可能
+- `[リンク名](URL)` でMarkdown風リンク
+- `[関連記事](@info)` のように相対リンクも可能
+- テーブル表示やリストにも対応！
 
 @skin 2
+# メディア埋め込み
 
-|機能|説明|
-|記事形式|INI + マークアップ|
-|スキンのCSS切り替え|@skin n で可能|
-|画像対応|i mg(ファイル名) の関数|
-|埋め込み|y outube(動画ID) の関数|
+img(1200x1200.jpg)
 
-@skin 2
-# リリースノート
-- 開発中 Alpha2
-index/noindexやリード文、ファビコンに対応。
-- 2025/05/22 Alpha1
-とりあえず動くようになった。基本的実装。
+youtube(dQw4w9WgXcQ)
 
-@skin 1
-このページもPera CMSで作ってるって知ったら驚く?
-[技術的情報はこちら！](@info)
-[Githubリポジトリ](https://github.com/ABATBeliever/PeraCMS)
-[この記事の定義ファイルを見る](https://abatbeliever.net/app/PeraCMS/data/index.txt)
-[この記事のスキンファイル「tech」を見る](https://abatbeliever.net/app/PeraCMS/skins/tech.skin)
+[GitHubを見る](https://github.com/ABATBeliever/PeraCMS)
+
+@skin 3
+# テーブルサンプル
+
+|バージョン|日付|変更点|
+|Alpha1|2025/05/22|基本構造実装|
+|Alpha2|2025/05/24|extend対応|
+|Alpha3|2025/05/27|HTMLテンプレート対応|
+
+@skin 4
+# おわりに
+
+Pera CMS は、**軽さ・簡潔さ・柔軟性**を大事にした国産CMSです。
+
+ぜひ [関連記事](@info) もご覧ください。
+[関連記事](@info)
 [EOF]
+
+みえちゃいけない

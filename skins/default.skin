@@ -1,33 +1,47 @@
-<?php
-//included skins "No-Skin" by ABATBeliever 
-//Skin for Alpha 2
-//Skin licence: free
-echo "<!DOCTYPE html><html lang='ja'><head><meta charset='UTF-8'>";
-echo "<title>" . htmlspecialchars($title) . "</title>";
-echo "<link rel='icon' href='{$favicon}' type='image/x-icon'>";
-echo "<meta name='robots' content='{$robots}'>";
-echo "<meta property='og:title' content='" . htmlspecialchars($title) . "'>";
-echo "<meta property='og:description' content='{$description}'>";
-if ($ogp) {
-    echo "<meta property='og:image' content='{$ogp}'>";
-}
-echo "<meta name='viewport' content='width=device-width, initial-scale=1'>";
-echo "<style>*,*::before,*::after{box-sizing:border-box}*{margin:0}@media (prefers-reduced-motion:no-preference){html{interpolate-size:allow-keywords}}body{line-height:1.5;-webkit-font-smoothing:antialiased}img,picture,video,canvas,svg{display:block;max-width:100%}input,button,textarea,select{font:inherit}p,h1,h2,h3,h4,h5,h6{overflow-wrap:break-word}p{text-wrap:pretty}h1,h2,h3,h4,h5,h6{text-wrap:balance}#root,#__next{isolation:isolate}</style>";
-echo "<style>
-body { background: rgb({$color['back-rgb']}); color: rgb({$color['text-rgb']}); font-family: sans-serif; line-height: 1.6; }
-h1, h2 { margin-top: 1em; }
-table { border-collapse: collapse; margin-top: 1em; }
-td { border: 1px solid #ccc; padding: 4px 8px; }
-</style></head><body>";
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="{robots}">
+  <link rel="icon" href="/img/{favicon}">
 
-echo "<h1>" . htmlspecialchars($title) . "</h1>";
-echo "<p>著者: " . htmlspecialchars($sections['ini']['author']) . " / 投稿日: " . htmlspecialchars($sections['ini']['day']) . "</p>";
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{ogp}">
+  <meta property="og:url" content="{url}">
 
-foreach ($bodyBlocks as $block) {
-    echo "<section class='skin-{$block['skin']}'>";
-    echo $block['html'];
-    echo "</section>";
-}
-
-echo "</body></html>";
-?>
+  <style>
+    body {
+      background: rgb({back-rgb});
+      color: rgb({text-rgb});
+      font-family: sans-serif;
+      line-height: 1.6;
+    }
+    h1, h2 {
+      margin-top: 1em;
+    }
+    table {
+      border-collapse: collapse; margin-top: 1em;
+    }
+    td {
+      border: 1px solid #ccc; padding: 4px 8px;
+    }
+  </style>
+</head>
+<body>
+  <main id="content">
+   <h1>{title}</h1>
+   <div class="meta">
+    著者: {author}　投稿日: {day}　最終更新: {update}
+   </div>
+   {text}
+  </main>
+  <footer>
+    <p>{copyright}</p>
+  </footer>
+</body>
+</html>

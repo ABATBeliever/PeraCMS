@@ -1,11 +1,11 @@
 <?php
 // Pera CMS by ABATBeliever
-// License - Apache 2.0
+// License - Apache 3.0
 $SYSTEM_NAME    = 'Pera CMS';
-$SYSTEM_VERSION = 'Alpha 2';
+$SYSTEM_VERSION = 'Alpha 3';
 $BASE_URL       = 'https://abatbeliever.net/app/PeraCMS/';
 
-$article = $_GET['article'] ?? '';
+$article = $_GET['article'] ?? 'index';
 if ($article === 'version') {
     echo "{$SYSTEM_NAME} {$SYSTEM_VERSION}. Thank you.";
     exit;
@@ -25,19 +25,19 @@ function parse_sections($content) {
     foreach ($lines as $line) {
         $line = trim($line);
         if ($line === '[EOF]') break;
+        if ($line === '' || str_starts_with($line, ';')) continue;
         if (preg_match('/^\[(.+)\]$/', $line, $m)) {
             $current = strtolower($m[1]);
             $sections[$current] = '';
-        } else {
-            if ($current) $sections[$current] .= $line . "\n";
+        } elseif ($current) {
+            $sections[$current] .= $line . "\n";
         }
     }
 
     foreach ($sections as $key => $value) {
         if ($key !== 'text') {
-            $lines = explode("\n", trim($value));
             $data = [];
-            foreach ($lines as $line) {
+            foreach (explode("\n", trim($value)) as $line) {
                 if (strpos($line, '=') !== false) {
                     list($k, $v) = explode('=', $line, 2);
                     $data[trim($k)] = trim($v);
@@ -53,27 +53,10 @@ function parse_sections($content) {
 }
 
 function convertRelativeLinks($text, $baseUrl) {
-    return preg_replace_callback('/\[(.*?)\]\(@([a-zA-Z0-9_\-]+)\)/', function ($matches) use ($baseUrl) {
-        $label = htmlspecialchars($matches[1], ENT_QUOTES, 'UTF-8');
-        $target = htmlspecialchars($matches[2], ENT_QUOTES, 'UTF-8');
-        return "<a href='{$baseUrl}{$target}'>{$label}</a>";
+    return preg_replace_callback('/\[(.*?)\]\(@([a-zA-Z0-9_\-]+)\)/', function ($m) {
+        return "<a href='?article=" . htmlspecialchars($m[2]) . "'>" . htmlspecialchars($m[1]) . "</a>";
     }, $text);
 }
-
-$sections = parse_sections($content);
-
-$title       = $sections['ini']['title']       ?? 'no-title';
-$color       = $sections['color']              ?? ['back-rgb' => '255,255,255', 'text-rgb' => '0,0,0'];
-$favicon     = $sections['ini']['favicon']     ?? 'favicon.ico';
-$robots      = $sections['ini']['robots']      ?? 'index, follow';
-$description = $sections['ini']['description'] ?? ' ';
-$ogp         = $sections['ini']['ogp']         ?? '';
-
-if ($ogp && !preg_match('#^https?://#', $ogp)) {
-    $ogp = rtrim($BASE_URL, '/') . '/img/' . ltrim($ogp, '/');
-}
-
-$sections['text'] = convertRelativeLinks($sections['text'], $BASE_URL);
 
 function convert_to_html($text) {
     $lines = explode("\n", $text);
@@ -102,11 +85,7 @@ function convert_to_html($text) {
                 $inTable = true;
             }
             $cols = array_map('trim', explode('|', trim($line, '|')));
-            $html .= "<tr>";
-            foreach ($cols as $col) {
-                $html .= "<td>" . htmlspecialchars($col) . "</td>";
-            }
-            $html .= "</tr>";
+            $html .= "<tr>" . implode('', array_map(fn($c) => "<td>" . htmlspecialchars($c) . "</td>", $cols)) . "</tr>";
         } else {
             $html .= "<p>" . htmlspecialchars($line) . "</p>";
         }
@@ -116,8 +95,11 @@ function convert_to_html($text) {
     return $html;
 }
 
+$sections = parse_sections($content);
+$text = convertRelativeLinks($sections['text'], $BASE_URL);
+
+$lines = explode("\n", $text);
 $bodyBlocks = [];
-$lines = explode("\n", $sections['text']);
 $currentSkin = 0;
 $currentText = '';
 
@@ -125,10 +107,7 @@ foreach ($lines as $line) {
     $line = trim($line);
     if (preg_match('/^@skin\s+(\d+)/', $line, $m)) {
         if ($currentText !== '') {
-            $bodyBlocks[] = [
-                'skin' => $currentSkin,
-                'html' => convert_to_html($currentText)
-            ];
+            $bodyBlocks[] = "<div class='skin-{$currentSkin}'>" . convert_to_html($currentText) . "</div>";
             $currentText = '';
         }
         $currentSkin = (int)$m[1];
@@ -137,17 +116,44 @@ foreach ($lines as $line) {
     }
 }
 if ($currentText !== '') {
-    $bodyBlocks[] = [
-        'skin' => $currentSkin,
-        'html' => convert_to_html($currentText)
-    ];
+    $bodyBlocks[] = "<div class='skin-{$currentSkin}'>" . convert_to_html($currentText) . "</div>";
 }
 
-$skinName = $sections['ini']['skin'] ?? 'default';
+$combinedHTML = implode("\n", $bodyBlocks);
+
+$ini = $sections['ini'] ?? [];
+$color = $sections['color'] ?? [];
+$extend = $sections['extend'] ?? [];
+
+$vars = [
+    'title' => $ini['title'] ?? 'no-title',
+    'description' => $ini['description'] ?? '',
+    'favicon' => $ini['favicon'] ?? 'favicon.ico',
+    'robots' => $ini['robots'] ?? 'index, follow',
+    'ogp' => isset($ini['ogp']) && !preg_match('#^https?://#', $ini['ogp']) ? $BASE_URL . 'img/' . ltrim($ini['ogp'], '/') : ($ini['ogp'] ?? ''),
+    'back-rgb' => $color['back-rgb'] ?? '255,255,255',
+    'text-rgb' => $color['text-rgb'] ?? '0,0,0',
+    'text' => $combinedHTML,
+    'url' => (isset($_SERVER['HTTPS']) ? 'https' : 'http') . '://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'],
+];
+
+foreach (['day', 'update', 'author'] as $k) {
+    $vars[$k] = $ini[$k] ?? '';
+}
+foreach ($extend as $k => $v) {
+    $vars[$k] = $v;
+}
+
+$skinName = $ini['skin'] ?? 'default';
 $skinPath = __DIR__ . "/skins/{$skinName}.skin";
 if (!file_exists($skinPath)) {
     http_response_code(500);
-    exit("Error in {$SYSTEM_NAME} {$SYSTEM_VERSION} - skin file '{$skinName}.skin' is not found / Article:{$article}");
+    exit("Error in {$SYSTEM_NAME} {$SYSTEM_VERSION} - skin '{$skinName}.skin' not found.");
 }
 
-include $skinPath;
+$template = file_get_contents($skinPath);
+foreach ($vars as $k => $v) {
+    $template = str_replace('{' . $k . '}', $k === 'text' ? $v : htmlspecialchars($v, ENT_QUOTES, 'UTF-8'), $template);
+}
+
+echo $template;

@@ -1,13 +1,31 @@
 [ini]
-title=「Pera CMS」の詳しい仕組み 
+title=超軽量CMS「Pera CMS」の詳細技術
 day=2025/05/22
-update=2025/05/22
+update=2025/05/27
 author=ABATBeliever
-skin=tech
+skin=default
+favicon=PeraCMS.ico
+robots=index, follow
+description=「Pera CMS」の技術情報
+ogp=1200x800.jpg
 
 [color]
 back-rgb=248,249,250
 text-rgb=33,37,41
 
+[extend]
+copyright=©2025 ABATBeliever
+notice=このCMSはアルファ版です
+
 [text]
-# 準備中
+@skin 0
+# Pera CMS とは？
+{notice}
+
+@skin 2
+Comming Soon
+
+[GitHubを見る](https://github.com/ABATBeliever/PeraCMS)
+[EOF]
+
+みえちゃいけない
