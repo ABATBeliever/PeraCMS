@@ -90,7 +90,7 @@
   </div>
 
   <footer style="text-align:center; padding: 1em; color: #999; font-size: 0.9em;">
-    {copyright}
+    {copyright} &copy; {site-year} {site-name}
   </footer>
 </body>
 </html>

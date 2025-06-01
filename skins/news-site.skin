@@ -1,0 +1,131 @@
+<!-- Style: News-Site -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="{robots}">
+  <link rel="icon" href="/img/{favicon}">
+
+  <!-- OGP対応 -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{ogp}">
+  <meta property="og:url" content="{url}">
+
+  <!-- スタイル -->
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Meiryo", sans-serif;
+      background: rgb({back-rgb});
+//#fffff5;
+      color: rgb({text-rgb});
+//#222;
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      padding: 10px 20px;
+      background: #fffff5;
+      border-bottom: 2px solid #ffcc00;
+    }
+
+    header img {
+      height: 60px;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 10px;
+      gap: 10px;
+    }
+
+    aside.left,
+    aside.right {
+      width: 200px;
+    }
+
+    aside iframe {
+      width: 100%;
+      height: 600px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    main {
+      flex-grow: 1;
+      background: #fff;
+      padding: 10px 20px;
+      box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    }
+
+    .meta {
+      font-size: 0.85rem;
+      color: #666;
+      margin-bottom: 10px;
+    }
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: bold;
+      background: #ffcc00;
+      padding: 5px;
+      margin-bottom: 15px;
+    }
+
+    article p {
+      line-height: 1.8;
+      margin: 1rem 0;
+    }
+
+    article img {
+      max-width: 100%;
+      border: 1px solid #ccc;
+      margin: 1rem 0;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        flex-direction: column;
+      }
+      aside.left,
+      aside.right {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    {site-name}
+  </header>
+
+  <div class="container">
+    <aside class="left">
+      <iframe src="" title="左カラム"></iframe>
+    </aside>
+
+    <main>
+      <div class="meta">{update} | by {author}</div>
+      <div class="title">{title}</div>
+      <article>
+        {text}
+      </article>
+    </main>
+
+    <aside class="right">
+      <iframe src="" title="右カラム"></iframe>
+    </aside>
+  </div>
+
+</body>
+</html>

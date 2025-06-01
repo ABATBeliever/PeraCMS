@@ -1,0 +1,93 @@
+<!-- Style: FileCatalog -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{description}">
+    <meta name="robots" content="{robots}">
+    <link rel="icon" href="/img/{favicon}">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{description}">
+    <meta property="og:image" content="{ogp}">
+    <meta property="og:url" content="{url}">
+
+  <style>
+    html, body { height: 100%; margin: 0; font-family: sans-serif; background: #f4f4f4; color: #222; display: flex; flex-direction: column; }
+    header, footer { background: #eaeaea; padding: 10px; text-align: center; font-size: 0.9rem; }
+    main { flex: 1; max-width: 980px; margin: 0 auto; background: #fff; padding: 15px; border: 1px solid #ccc; width: 100%; box-sizing: border-box; }
+    h1 { font-size: 1.5rem; margin-bottom: 1rem; border-bottom: 1px solid #ddd; padding-bottom: 5px; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.95rem; margin-bottom: 1rem; }
+    th, td { padding: 6px 8px; border: 1px solid #ccc; vertical-align: top; }
+    .download-links a { display: inline-block; background: #0078d7; color: #fff; text-decoration: none; padding: 6px 12px; margin: 2px; font-size: 0.9rem; border-radius: 4px; }
+    .notice-box { background: #fff8dc; border: 1px solid #ccc; padding: 10px; margin-bottom: 1rem; font-size: 0.9rem; }
+    .flex-row { display: flex; flex-wrap: wrap; gap: 20px; }
+    .flex-col { flex: 1 1 45%; min-width: 280px; }
+    iframe { width: 100%; height: 60%; aspect-ratio: 16 / 9; border: none; }
+    @supports not (aspect-ratio: 1 / 1) { iframe { height: 315px; } }
+    img { width: 100%; height: auto; }
+    @media screen and (max-width: 600px) {
+      h1 { font-size: 1.2rem; }
+      th, td { font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+
+<iframe src="./src/header.html" class="iframe-header" scrolling="no" style="width: 100%; height: 80px; border: none;"></iframe>
+
+<header>
+  <strong>このファイルは安全性を確認して{IsFileSafe}</strong></a>
+</header>
+
+<main>
+  <h1>{FileName} by <a href="{PersonaLink}">{PersonaName}</a></h1>
+
+  <div class="notice-box">
+    {notice}
+  </div>
+
+  <div class="flex-row">
+    <div class="flex-col">
+      <img src="./img/{Thumbnail}" alt="サムネイル">
+    </div>
+    <div class="flex-col">
+      <table>
+        <tr><th>名称</th><td>{FileName}</td></tr>
+        <tr><th>作者</th><td><a href="{PersonaLink}">{PersonaName}</a></td></tr>
+        <tr><th>動作環境</th><td>{Env}</td></tr>
+        <tr><th>配布形式</th><td>{Format}</td></tr>
+        <tr><th>バージョン</th><td>{Version}</td></tr>
+        <tr><th>最終更新</th><td>{update}</td></tr>
+        <tr><th>注意事項</th><td>{Caution}</td></tr>
+        <tr><th>ライセンス</th><td>{License}</td></tr>
+      </table>
+
+      <div class="download-links">
+          <a href="{Download_File_1}" target="_blank">{Download_Name_1}</a>
+          <a href="{Download_File_2}" target="_blank">{Download_Name_2}</a>
+          <a href="{Download_File_3}" target="_blank">{Download_Name_3}</a>
+      </div>
+    </div>
+  </div>
+
+  <h2>使い方</h2>
+    {text}
+
+  <h2>補足</h2>
+  <table>
+    <tr><th>概要</th><td>{OverView}</td></tr>
+    <tr><th>導入方法</th><td>{installWay}</td></tr>
+    <tr><th>配布形態</th><td>{Format}</td></tr>
+  </table>
+</main>
+
+<footer>
+  &copy; {site-year} {site-name} - 提供：<a href="{PersonaLink}">{PersonaName}</a><br>
+  <small>このファイルは安全性を確認して{IsFileSafe}</small>
+</footer>
+</body>
+</html>

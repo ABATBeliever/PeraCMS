@@ -1,0 +1,37 @@
+[ini]
+title=スキン「News-Site」のデザイン
+day=2025/05/22
+update=2025/05/30
+author=PeraCMSの既定
+skin=news-site
+favicon=PeraCMS.ico
+robots=index, follow
+description=PeraCMSの標準テーマ「News-Site」のサンプル
+ogp=1200x800.jpg
+
+[color]
+back-rgb=248,249,250
+text-rgb=33,37,41
+
+[extend]
+copyright=©<名前を入力>
+notice=このCMSはアルファ版です
+site-year=2025
+site-name=<サイト名を入力>
+
+[text]
+これは、PeraCMS に付属する標準テーマ「News-Site」のサンプルです
+[PeraCMSについて](https://github.com/ABATBeliever/PeraCMS)
+
+画像の埋め込みはimgフォルダ内で参照されます
+@img(1200x800.jpg)
+
+youtubeの動画埋め込みは動画IDの部分で指定します
+@youtube(dQw4w9WgXcQ)
+
+|バージョン|リリース日付|
+|Alpha1|2025/05/22|
+|Alpha2|2025/05/24|
+|Alpha3|2025/05/29|
+
+[EOF]

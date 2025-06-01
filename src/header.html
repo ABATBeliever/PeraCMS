@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex">
+    <title>header - iframe</title>
+    <style>
+* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        html, body {
+            width: 100%;
+            height: auto;
+            background: transparent; 
+        }
+        .site-header {
+            background-color: #4CAF50; 
+            color: white;
+            padding: 10px 20px;
+            width: 100%;
+            box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+        .logo img {
+            width: 60px;
+            height: auto;
+        }
+        .menu img {
+            width: 20px;
+            height: auto;
+        }
+        .site-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2px;
+            margin: 0;
+            padding: 0;
+        }
+        .menu ul li a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 12px 10px;
+            transition: all 0.3s ease;
+        }
+        .menu ul li a:hover {
+            background-color: #45a049;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header class="site-header">
+        <div class="logo">
+            <a href="" target="_blank"><img src="" alt=""></a>
+        </div>
+        <nav class="menu">
+            <ul>
+                <li><a href="" target="_blank"><img src="" alt=""></a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

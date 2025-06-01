@@ -1,0 +1,109 @@
+<!-- Style: Simple -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="{robots}">
+  <link rel="icon" href="/img/{favicon}">
+
+  <!-- OGP対応 -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{ogp}">
+  <meta property="og:url" content="{url}">
+
+  <!-- スタイル -->
+  <style>
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      background-color: rgb({back-rgb});
+      color: rgb({text-rgb});
+      margin: 0;
+      padding: 0;
+      line-height: 1.7;
+    }
+
+    header {
+      border-bottom: 1px solid #ddd;
+      padding: 2rem 1rem 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+
+    header p.meta {
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    main {
+      max-width: 720px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+
+    .skin-1 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      border-left: 4px solid #aaa;
+      padding-left: 0.5rem;
+    }
+
+    p {
+      margin: 1rem 0;
+      text-align: justify;
+    }
+
+    .skin-2 {
+      border-left: 4px solid #ccc;
+      padding-left: 1rem;
+      color: #555;
+      margin: 1.5rem 0;
+      font-style: italic;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      padding: 1rem;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      article h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{title}</h1>
+    <p class="meta">著者: {author}　投稿日: {day}　最終更新: {update}</p>
+  </header>
+
+  <main>
+    <article>
+      {text}
+    </article>
+  </main>
+
+  <footer>
+    {copyright} &copy; {site-year} {site-name}
+  </footer>
+</body>
+</html>

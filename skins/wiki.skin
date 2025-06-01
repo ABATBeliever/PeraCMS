@@ -1,0 +1,144 @@
+<!-- Style: Wiki -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="{robots}">
+  <link rel="icon" href="/img/{favicon}">
+
+  <!-- OGP対応 -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{ogp}">
+  <meta property="og:url" content="{url}">
+
+  <!-- スタイル -->
+  <style>
+    body {
+      font-family: "Helvetica Neue", sans-serif;
+      margin: 0;
+      background: rgb({back-rgb});
+//#f8f9fa;
+      color: rgb({text-rgb});
+//#202122;
+    }
+
+    header {
+      background: #ffffff;
+      padding: 1rem;
+      border-bottom: 1px solid #ccc;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
+    }
+
+    main {
+      display: flex;
+      gap: 2rem;
+      padding: 1rem;
+    }
+
+    nav {
+      width: 200px;
+      flex-shrink: 0;
+      background: #ffffff;
+      padding: 1rem;
+      border: 1px solid #ccc;
+      font-size: 0.9rem;
+    }
+
+    nav h2 {
+      font-size: 1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    nav ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    nav li {
+      margin-bottom: 0.5rem;
+    }
+
+    nav a {
+      color: #0645ad;
+      text-decoration: none;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    article {
+      flex: 1;
+      background: #ffffff;
+      padding: 1rem;
+      border: 1px solid #ccc;
+    }
+
+    p {
+      margin: 1rem 0;
+    }
+
+    footer {
+      background: #f1f1f1;
+      text-align: center;
+      padding: 0.5rem;
+      font-size: 0.8rem;
+      border-top: 1px solid #ccc;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+
+      nav {
+        width: 100%;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .skin-1 {
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 0.25rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>{title}</h1>
+    <p><small>著者: {author}　投稿日: {day}　最終更新: {update}</small></p>
+  </header>
+
+  <main>
+    <nav>
+      <h2>おすすめの記事</h2>
+      <ul>
+        <li><a href="#">hoge</a></li>
+        <li><a href="#">huga</a></li>
+        <li><a href="#">hoyo</a></li>
+        <li><a href="#">poyo</a></li>
+      </ul>
+    </nav>
+
+    <article>
+        <h2>{title}</h2>
+        <p>{text}</p>
+    </article>
+
+  </main>
+
+  <footer>
+    <p>{copyright} &copy; {site-year} {site-name}</p>
+  </footer>
+</body>
+</html>

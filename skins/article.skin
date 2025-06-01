@@ -1,0 +1,131 @@
+<!-- Style: Article -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="{robots}">
+  <link rel="icon" href="/img/{favicon}">
+
+  <!-- OGP対応 -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{ogp}">
+  <meta property="og:url" content="{url}">
+
+  <!-- スタイル -->
+  <style>
+    body {
+      font-family: "Meiryo", sans-serif;
+      margin: 0;
+      background: rgb({back-rgb});
+      color: rgb({text-rgb});
+    }
+
+    header {
+      padding: 1rem;
+      border-bottom: 1px solid #ddd;
+      background: #f9f9f9;
+    }
+
+    header h1 {
+      font-size: 2rem;
+      margin: 0;
+      color: #2c3e50;
+    }
+
+    header .meta {
+      font-size: 0.9rem;
+      color: #777;
+    }
+
+    main {
+      display: flex;
+      max-width: 1200px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+      gap: 1.5rem;
+    }
+
+    .sidebar {
+      width: 280px;
+      flex-shrink: 0;
+    }
+
+    .sidebar iframe {
+      width: 100%;
+      height: 400px;
+      border: 1px solid #ccc;
+      margin-bottom: 1rem;
+    }
+
+    .content {
+      flex-grow: 1;
+      max-width: 100%;
+    }
+
+    .content article {
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    .content article h2 {
+      font-size: 1.5rem;
+      margin-top: 2rem;
+      color: #34495e;
+    }
+
+    .content article img {
+      max-width: 100%;
+      margin: 1rem 0;
+      border: 1px solid #ccc;
+    }
+
+    footer {
+      border-top: 1px solid #ddd;
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: #666;
+      margin-top: 2rem;
+    }
+
+    @media (max-width: 768px) {
+      main {
+        flex-direction: column;
+      }
+      .sidebar {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>{title}</h1>
+    <div class="meta">著者: {author}　投稿日: {day}　最終更新: {update}  カテゴリ: {category}</div>
+  </header>
+
+  <main>
+    <aside class="sidebar">
+      <iframe src="" title=""></iframe>
+      <iframe src="" title=""></iframe>
+    </aside>
+
+    <div class="content">
+      <article>
+        {text}
+      </article>
+    </div>
+  </main>
+
+  <footer>
+    {copyright} &copy; {site-year} {site-name}
+  </footer>
+
+</body>
+</html>

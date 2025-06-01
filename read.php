@@ -1,9 +1,9 @@
 <?php
 // Pera CMS by ABATBeliever
-// License - Apache 3.0
+// License - Apache 2.0
 $SYSTEM_NAME    = 'Pera CMS';
-$SYSTEM_VERSION = 'Alpha 3';
-$BASE_URL       = 'https://abatbeliever.net/app/PeraCMS/';
+$SYSTEM_VERSION = 'Beta 1';
+$BASE_URL       = '<Please insert>';
 
 $article = $_GET['article'] ?? 'index';
 if ($article === 'version') {

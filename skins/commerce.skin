@@ -1,0 +1,211 @@
+<!-- Style: Commerce -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{description}">
+  <meta name="robots" content="{robots}">
+  <link rel="icon" href="/img/{favicon}">
+
+  <!-- OGP対応 -->
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{description}">
+  <meta property="og:image" content="{ogp}">
+  <meta property="og:url" content="{url}">
+  <style>
+    body {
+      font-family: "Meiryo", sans-serif;
+      margin: 0;
+      padding: 0;
+      background: rgb({back-rgb});
+      color: rgb({text-rgb});
+    }
+
+    header {
+      background: #e60033;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+    }
+
+    nav {
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+
+    nav a {
+      color: #e60033;
+      margin: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 0.95rem;
+    }
+
+    main {
+      display: flex;
+      max-width: 1200px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+      gap: 1rem;
+    }
+
+    .column {
+      flex: 1;
+      background: #fff;
+      padding: 1rem;
+      border: 1px solid #ddd;
+    }
+
+    .section {
+      margin-bottom: 2rem;
+    }
+
+    .section h2 {
+      font-size: 1rem;
+      border-bottom: 2px solid #e60033;
+      margin-bottom: 0.5rem;
+      padding-bottom: 0.25rem;
+    }
+
+    .section ul {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .section li {
+      font-size: 0.9rem;
+      padding: 0.25rem 0;
+      border-bottom: 1px dotted #ccc;
+    }
+
+    .section li a {
+      text-decoration: none;
+      color: #0044cc;
+    }
+
+    .ads {
+      background: #fafafa;
+      border: 1px dashed #ccc;
+      padding: 1rem;
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+    }
+
+    footer {
+      background: #eee;
+      font-size: 0.8rem;
+      text-align: center;
+      padding: 2rem 1rem;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>{title}</h1>
+  </header>
+
+  <nav>
+    <a href="#">ニュース</a>
+    <a href="#">天気</a>
+    <a href="#">スポーツ</a>
+    <a href="#">占い</a>
+    <a href="#">金融</a>
+    <a href="#">地図</a>
+    <a href="#">動画</a>
+    <a href="#">掲示板</a>
+  </nav>
+
+  <main>
+    {text}
+  </main>
+
+  <main>
+    <div class="column">
+      <div class="section">
+        <h2>最新ニュース</h2>
+        <ul>
+          <li><a href="#">政府、新しい経済対策を発表</a></li>
+          <li><a href="#">渋谷で大規模停電、一部交通機関に影響</a></li>
+          <li><a href="#">猫カフェに革命！？最新スポット特集</a></li>
+          <li><a href="#">円高進行、企業の対応は？</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>話題のキーワード</h2>
+        <ul>
+          <li><a href="#">にゃんこスター再結成</a></li>
+          <li><a href="#">アニメ春新作ランキング</a></li>
+          <li><a href="#">バイト面接で聞かれること</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="column">
+      <div class="section">
+        <h2>エンタメ</h2>
+        <ul>
+          <li><a href="#">今週の映画ランキングTOP10</a></li>
+          <li><a href="#">アイドルライブ特集2025</a></li>
+          <li><a href="#">話題のVTuberコラボ</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>ライフ＆マネー</h2>
+        <ul>
+          <li><a href="#">猫と暮らす家づくり</a></li>
+          <li><a href="#">月1万円でできる節約術</a></li>
+          <li><a href="#">学生でも始められる投資</a></li>
+        </ul>
+      </div>
+
+      <div class="ads">ここにバナー広告（300x250）</div>
+    </div>
+
+    <div class="column">
+      <div class="section">
+        <h2>ツール＆サービス</h2>
+        <ul>
+          <li><a href="#">メールチェック</a></li>
+          <li><a href="#">天気予報を見る</a></li>
+          <li><a href="#">乗換案内</a></li>
+          <li><a href="#">地図・交通</a></li>
+          <li><a href="#">求人検索</a></li>
+        </ul>
+      </div>
+
+      <div class="section">
+        <h2>ゲーム＆コミュニティ</h2>
+        <ul>
+          <li><a href="#">みんなのスコアランキング</a></li>
+          <li><a href="#">雑談掲示板</a></li>
+          <li><a href="#">ペット自慢投稿</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    {copyright} &copy; {site-year} {site-name}
+  </footer>
+
+</body>
+</html>
+

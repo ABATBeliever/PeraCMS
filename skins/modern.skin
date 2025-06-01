@@ -1,0 +1,59 @@
+<!-- Style: Modern -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>{title}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{description}">
+    <meta name="robots" content="{robots}">
+    <link rel="icon" href="/img/{favicon}">
+
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="{title}">
+    <meta property="og:description" content="{description}">
+    <meta property="og:image" content="{ogp}">
+    <meta property="og:url" content="{url}">
+
+    <style>
+        body {
+            background: url(./img/{background-pic}) no-repeat center center fixed;
+            background-size: cover;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            color: rgb({text-rgb});
+        }
+        .content-container {
+            width: 80%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            flex: 1;
+        }
+
+        .iframe-header, .iframe-footer {
+            width: 100%;
+            border: none;
+            height: 60px;
+        }
+    </style>
+
+</head>
+<body>
+    <iframe src="./src/header.html" class="iframe-header" scrolling="no"></iframe>
+
+    <br><br><br>
+    <div class="content-container">
+        <h1 id="0">{title}</h1>
+        <p>{text}</p>
+    </div>
+    <br><br><br>
+</body>
+</html>
